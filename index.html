@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barefoot Hockey Goalie — EPK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange:  #ee5041;
+      --pink:    #D4447A;
+      --purple:  #7B5BA6;
+      --teal:    #4AADA8;
+      --cream:   #FAF6EE;
+      --dark:    #1A1210;
+      --offwhite:#F2EDE4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Courier Prime', monospace;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-family: 'Alfa Slab One', serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3.5rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(212,68,122,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 75% 30%, rgba(74,173,168,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-album {
+      position: relative;
+      width: min(340px, 85vw);
+      aspect-ratio: 1 / 1;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 3px var(--orange);
+    }
+    .hero-album img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: var(--pink);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.55rem;
+      border-radius: 2px;
+    }
+    .hero-name {
+      font-family: 'Alfa Slab One', serif;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      line-height: 1;
+      position: relative;
+    }
+    .hero-name span { color: var(--orange); }
+    .hero-tagline {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(0.75rem, 2vw, 0.95rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 0.6rem;
+      position: relative;
+    }
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+    }
+    .btn {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--pink); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid var(--teal);
+    }
+    .btn-secondary:hover { background: var(--teal); color: var(--dark); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.4rem;
+    }
+    h2 {
+      font-family: 'Alfa Slab One', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      letter-spacing: 0.05em;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* section dividers */
+    section + section { border-top: 1px solid rgba(123,91,166,0.18); }
+
+    /* ── ABOUT ── */
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--dark);
+    }
+    .about-body p + p { margin-top: 1.1rem; }
+    .pull-quote {
+      border-left: 4px solid var(--pink);
+      padding-left: 1.3rem;
+      margin: 2rem 0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--purple);
+    }
+    .band-photo {
+      margin-top: 2rem;
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── MUSIC / ALBUM ── */
+    .album-card {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .album-art {
+      width: min(220px, 100%);
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+    .album-info h3 {
+      font-family: 'Alfa Slab One', serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+    }
+    .album-info .album-meta {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1rem;
+    }
+    .album-info p { font-size: 0.98rem; line-height: 1.75; }
+    .listen-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+    }
+    .listen-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal);
+      padding-bottom: 2px;
+    }
+    .listen-link:hover { color: var(--orange); border-color: var(--orange); }
+
+    /* ── VIDEO: 16:9 ── */
+    .video-16-9-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .video-16-9-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── VIDEO: 9:16 GALLERY (carousel) ── */
+    .gallery-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .gallery-stage {
+      position: relative;
+      width: min(360px, 80vw);
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.35);
+    }
+    .gallery-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26,18,16,0.65);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.6rem 0.85rem;
+      z-index: 10;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .gallery-arrow:hover { background: var(--pink); }
+    .gallery-prev { left: 0.6rem; }
+    .gallery-next { right: 0.6rem; }
+    .gallery-counter {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26,18,16,0.6);
+      color: var(--cream);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+    .social-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal);
+      padding-bottom: 2px;
+    }
+    .social-link:hover { color: var(--orange); border-color: var(--orange); }
+
+    /* ── MEMBERS ── */
+    .members-list {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .member-row {
+      font-size: 1rem;
+      border-bottom: 1px dotted rgba(123,91,166,0.3);
+      padding-bottom: 0.55rem;
+    }
+    .member-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      color: var(--orange);
+    }
+    .member-role {
+      color: var(--dark);
+    }
+
+    /* ── SHOWS ── */
+    .shows-tba {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-top: 0.5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-intro {
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .form-row input { flex: 1; min-width: 180px; }
+    input, textarea {
+      background: var(--offwhite);
+      border: 1.5px solid rgba(123,91,166,0.35);
+      border-radius: 3px;
+      padding: 0.65rem 0.9rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.95rem;
+      color: var(--dark);
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 0.75rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--pink); }
+
+    /* ── FOLLOW ── */
+    .follow-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    .follow-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      background: var(--purple);
+      padding: 0.5rem 1.1rem;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .follow-link:hover { background: var(--pink); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.4);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+
+    /* ── ACCENT BAR ── */
+    .accent-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--pink), var(--purple), var(--teal));
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0.6rem 1rem; }
+      section { padding: 3rem 1.2rem; }
+      .album-card { flex-direction: column; }
+      .album-art { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="#top">Barefoot Hockey Goalie</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="accent-bar"></div>
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="top">
+    <div class="hero-album">
+      <img src="BHG_Clairemont_Vinylfront.jpg" alt="Barefoot Hockey Goalie — Clairemont album cover" />
+      <span class="hero-badge">New Album</span>
+    </div>
+    <h1 class="hero-name">Barefoot<br /><span>Hockey</span> Goalie</h1>
+    <p class="hero-tagline">Clairemont &nbsp;·&nbsp; San Diego, CA</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Get in Touch</a>
+      <a class="btn btn-secondary" href="#video">Watch / Listen</a>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <p class="section-label">The Band</p>
+    <h2>About</h2>
+    <div class="about-body">
+      <p>Barefoot Hockey Goalie is a San Diego-based original rock band whose music blurs the line between the confessional and the cinematic. Drawing on post-punk grit, classic songwriting craft, and an instinct for melody that lodges itself somewhere behind your sternum, BHG makes songs that feel like they've always existed.</p>
+
+      <p>The band's debut album <em>Clairemont</em> is named for the San Diego neighborhood where much of it was written — a place defined less by landmarks than by long flat streets, afternoon light, and the particular loneliness of being twenty-something and surrounded by people. The record captures that feeling with unflinching honesty and more than a few great hooks.</p>
+
+      <div class="pull-quote">"Music that sounds like a city at 2am — restless, warm, and not quite ready to go home."</div>
+
+      <p>Formed around the songwriting partnership of Toe Knee Padderelli and Blair Hatch, BHG has spent the last several years building a devoted local following through relentless gigging, word of mouth, and the kind of live show that makes people feel less alone. <em>Clairemont</em> is the document of that journey — and the starting pistol for whatever comes next.</p>
+    </div>
+  </section>
+
+  <!-- ── MUSIC ── -->
+  <section id="music">
+    <p class="section-label">Discography</p>
+    <h2>Music</h2>
+    <div class="album-card">
+      <img class="album-art" src="BHG_Clairemont_Vinylfront.jpg" alt="Clairemont album cover" />
+      <div class="album-info">
+        <h3>Clairemont</h3>
+        <p class="album-meta">LP &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Independent</p>
+        <p>Barefoot Hockey Goalie's debut full-length is ten tracks of finely wrought San Diego indie rock — immediate enough to hook you on first listen, layered enough to reward the tenth. Recorded and produced with care, <em>Clairemont</em> is available on vinyl, digitally, and everywhere people still care about music.</p>
+        <div class="listen-links">
+          <a class="listen-link" href="#" target="_blank">Spotify</a>
+          <a class="listen-link" href="#" target="_blank">Apple Music</a>
+          <a class="listen-link" href="#" target="_blank">Bandcamp</a>
+          <a class="listen-link" href="#" target="_blank">YouTube Music</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIDEO ── -->
+  <section id="video">
+    <p class="section-label">Media</p>
+    <h2>Video</h2>
+
+    <!-- 16:9 player -->
+    <p class="video-section-label">Music Videos &amp; Live Footage</p>
+    <div class="video-16-9-wrap">
+      <iframe
+        id="video169"
+        src="https://player.vimeo.com/video/XXXXXXXXX?title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- 9:16 gallery -->
+    <p class="video-section-label" style="margin-top:2.5rem;">Social Clips</p>
+    <div class="gallery-wrap">
+      <div class="gallery-stage">
+        <iframe
+          class="gallery-video"
+          id="galleryVideo0"
+          src="https://player.vimeo.com/video/YYYYYYYYY?title=0&byline=0&portrait=0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <iframe
+          class="gallery-video"
+          id="galleryVideo1"
+          src="https://player.vimeo.com/video/ZZZZZZZZZ?title=0&byline=0&portrait=0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          style="display:none;">
+        </iframe>
+        <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous">&#8592;</button>
+        <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next">&#8594;</button>
+        <div class="gallery-counter"><span id="galleryCurrent">1</span> / <span id="galleryTotal">2</span></div>
+      </div>
+    </div>
+
+    <a class="social-link" href="https://vimeo.com" target="_blank">View More on Vimeo →</a>
+
+    <!-- Vimeo Player API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      (function () {
+        // ── 16:9 end-card suppression ──
+        var player169 = new Vimeo.Player(document.getElementById('video169'));
+        player169.on('ended', function () {
+          player169.setCurrentTime(0).then(function () { player169.pause(); });
+        });
+
+        // ── 9:16 gallery carousel ──
+        var items = [
+          document.getElementById('galleryVideo0'),
+          document.getElementById('galleryVideo1')
+        ];
+        var current = 0;
+
+        // end-card suppression for each portrait video
+        items.forEach(function (el) {
+          var p = new Vimeo.Player(el);
+          p.on('ended', function () {
+            p.setCurrentTime(0).then(function () { p.pause(); });
+          });
+        });
+
+        function pauseItem(el) {
+          el.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
+        }
+
+        function show(idx) {
+          pauseItem(items[current]);
+          items[current].style.display = 'none';
+          current = (idx + items.length) % items.length;
+          items[current].style.display = 'block';
+          document.getElementById('galleryCurrent').textContent = current + 1;
+        }
+
+        document.getElementById('galleryPrev').addEventListener('click', function () { show(current - 1); });
+        document.getElementById('galleryNext').addEventListener('click', function () { show(current + 1); });
+      })();
+    </script>
+  </section>
+
+  <!-- ── MEMBERS ── -->
+  <section id="members">
+    <p class="section-label">The People</p>
+    <h2>Members</h2>
+    <div class="members-list">
+      <div class="member-row">
+        <span class="member-name">Toe Knee Padderelli</span> — <span class="member-role">Guitar, Vocals</span>
+      </div>
+      <div class="member-row">
+        <span class="member-name">Blair Hatch</span> — <span class="member-role">Vocals</span>
+      </div>
+      <div class="member-row">
+        <span class="member-name">Matthew Pray</span> — <span class="member-role">Bass</span>
+      </div>
+      <div class="member-row">
+        <span class="member-name">Greg Farrar</span> — <span class="member-role">Drums</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOLLOW ── -->
+  <section id="follow">
+    <p class="section-label">Stay Connected</p>
+    <h2>Follow Us</h2>
+    <div class="follow-links">
+      <a class="follow-link" href="#" target="_blank">Instagram</a>
+      <a class="follow-link" href="#" target="_blank">Spotify</a>
+      <a class="follow-link" href="#" target="_blank">Bandcamp</a>
+      <a class="follow-link" href="#" target="_blank">YouTube</a>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <p class="section-label">Reach Out</p>
+    <h2>Get in Touch</h2>
+    <p class="contact-intro">Booking inquiries, press requests, and general hellos welcome.</p>
+    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <input type="text" name="subject" placeholder="Subject" />
+      <textarea name="message" placeholder="Your message..." required></textarea>
+      <button class="form-submit" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <div class="accent-bar"></div>
+  <footer>
+    &copy; 2026 Barefoot Hockey Goalie &nbsp;&mdash;&nbsp; San Diego, CA
+  </footer>
+
+</body>
+</html>
