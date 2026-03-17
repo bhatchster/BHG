@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --orange:  #ee5041;
+      --orange:  #D62828;
       --pink:    #D4447A;
       --purple:  #7B5BA6;
       --teal:    #4AADA8;
@@ -215,12 +215,20 @@
     }
 
     /* ── MUSIC / ALBUM ── */
+    .album-covers {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
     .album-card {
       display: flex;
       gap: 2rem;
       align-items: flex-start;
       flex-wrap: wrap;
-      margin-top: 1rem;
+      margin-top: 0;
     }
     .album-art {
       width: min(220px, 100%);
@@ -244,6 +252,59 @@
       margin-bottom: 1rem;
     }
     .album-info p { font-size: 0.98rem; line-height: 1.75; }
+    .tracklist {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tracklist-side {
+      flex: 1;
+      min-width: 150px;
+    }
+    .tracklist-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+    .tracklist-tracks {
+      list-style: none;
+      padding-left: 0;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--dark);
+    }
+    .track-link {
+      color: var(--dark);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      border-bottom: 1px dotted var(--orange);
+      padding-bottom: 1px;
+    }
+    .track-link:hover {
+      color: var(--orange);
+    }
+    /* ── BACK CATALOG ── */
+    .catalog-title {
+      font-family: 'Alfa Slab One', serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--orange);
+      margin-bottom: 0.2rem;
+    }
+    .bandcamp-player {
+      display: block;
+      margin-top: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
     .listen-links {
       display: flex;
       flex-wrap: wrap;
@@ -493,7 +554,6 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#music">Music</a></li>
-      <li><a href="#video">Video</a></li>
       <li><a href="#members">Members</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -507,11 +567,6 @@
       <span class="hero-badge">New Album</span>
     </div>
     <h1 class="hero-name">Barefoot<br /><span>Hockey</span> Goalie</h1>
-    <p class="hero-tagline">Clairemont &nbsp;·&nbsp; San Diego, CA</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#contact">Get in Touch</a>
-      <a class="btn btn-secondary" href="#video">Watch / Listen</a>
-    </div>
   </div>
   <div class="accent-bar"></div>
 
@@ -520,13 +575,13 @@
     <p class="section-label">The Band</p>
     <h2>About</h2>
     <div class="about-body">
-      <p>Barefoot Hockey Goalie is a San Diego-based original rock band whose music blurs the line between the confessional and the cinematic. Drawing on post-punk grit, classic songwriting craft, and an instinct for melody that lodges itself somewhere behind your sternum, BHG makes songs that feel like they've always existed.</p>
+      <p>Barefoot Hockey Goalie has been a hardworking band for the last 32 years. Really. We never took a break. We just made a new album. We want to make another one. We'd like to come play in your town. We like this!</p>
 
-      <p>The band's debut album <em>Clairemont</em> is named for the San Diego neighborhood where much of it was written — a place defined less by landmarks than by long flat streets, afternoon light, and the particular loneliness of being twenty-something and surrounded by people. The record captures that feeling with unflinching honesty and more than a few great hooks.</p>
+      <p>Starting as a two-piece, Tony Padderelli and Berto Catch played their rock opera, Darius, in numerous venues in San Diego. As a four piece, BHG played Street Fairs and music showcases, toured the west coast and became known for their unique blend of rock theatre.</p>
 
-      <div class="pull-quote">"Music that sounds like a city at 2am — restless, warm, and not quite ready to go home."</div>
+      <p>With two releases on Accretions Records and the self released albums An Interview with Thomas Edison and Kid Champion, BHG remained on stage, sharpening skates, crossing the blue line. Their fourth rock opera is an attempt to smack listeners with a suburban punch and get them out to see a show!</p>
 
-      <p>Formed around the songwriting partnership of Toe Knee Padderelli and Blair Hatch, BHG has spent the last several years building a devoted local following through relentless gigging, word of mouth, and the kind of live show that makes people feel less alone. <em>Clairemont</em> is the document of that journey — and the starting pistol for whatever comes next.</p>
+      <div class="pull-quote">"This is crazy, unexpected and a whole lotta fun in a very twisted way." — INK 19</div>
     </div>
   </section>
 
@@ -534,107 +589,222 @@
   <section id="music">
     <p class="section-label">Discography</p>
     <h2>Music</h2>
+    <div class="album-covers">
+      <img class="album-art" src="BHG_Clairemont_Vinylfront.jpg" alt="Clairemont album front cover" />
+      <img class="album-art" src="BHG_Clairemont_Vinylback.jpg" alt="Clairemont album back cover" />
+    </div>
     <div class="album-card">
-      <img class="album-art" src="BHG_Clairemont_Vinylfront.jpg" alt="Clairemont album cover" />
       <div class="album-info">
         <h3>Clairemont</h3>
-        <p class="album-meta">LP &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Independent</p>
-        <p>Barefoot Hockey Goalie's debut full-length is ten tracks of finely wrought San Diego indie rock — immediate enough to hook you on first listen, layered enough to reward the tenth. Recorded and produced with care, <em>Clairemont</em> is available on vinyl, digitally, and everywhere people still care about music.</p>
+        <p class="album-meta">LP &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Ouch! Productions</p>
+        <p>Pre-internet Clairemont puts you firmly in the throes of suburbia, where radio is king. Follow the plight of Ian Golden Peterson as he navigates a filterless childhood and espouses suburban exceptionalism. Fast forward to the present as the consequences of neglect and indulgence bring Ian to consider his travails in the context of the infamous Clairemont tank ride of 1995. Can a homecoming help secure his comeback? Is this the last one?</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; font-style: italic; border-left: 3px solid var(--pink); padding-left: 1rem; color: var(--purple);">Felt so good, and it does feel right. What a great adventure you've offered! Not a single misstep (not that I expected one), just beautiful songs played, sung and produced to perfection. It's a knockout. Remember the 'Welcome to Clairemont' sign as you started up Clairemont Drive from 1-5? I lived on the top of that hill. I guess that's just saying you make me sorta proud to have been there. Clairemont is fucking thrilling, entirely glorious! More please.<br /><br />&nbsp;&nbsp;— José Sinatra<br />&nbsp;&nbsp;<span style="font-size: 0.8rem;">legendary San Diego entertainer and crooner extraordinaire</span></p>
+        <p style="margin-top: 1.5rem; font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange);">Spin it — Click the track title to play video</p>
+        <div class="tracklist">
+          <div class="tracklist-side">
+            <p class="tracklist-label">Side A</p>
+            <ol class="tracklist-tracks">
+              <li><a class="track-link" href="#" data-video-id="1174007863">1. Intro</a></li>
+              <li><a class="track-link" href="#" data-video-id="1168305749">2. Too Fast Too Young</a></li>
+              <li><a class="track-link" href="#" data-video-id="1174041639">3. FU I'm From</a></li>
+              <li><a class="track-link" href="#" data-video-id="1174041616">4. Sea is a Snake</a></li>
+            </ol>
+          </div>
+          <div class="tracklist-side">
+            <p class="tracklist-label">Side B</p>
+            <ol class="tracklist-tracks" start="5">
+              <li><a class="track-link" href="#" data-video-id="1020642671">5. Learning to Drive in the Suburbs</a></li>
+              <li><a class="track-link" href="#" data-video-id="1174039396">6. Comeback</a></li>
+              <li><a class="track-link" href="#" data-video-id="1011124218">7. Sign Spinner</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- 16:9 Player -->
+        <div class="video-16-9-wrap" style="margin-top: 2rem;">
+          <img id="trackPlayerPlaceholder" src="clairestart.jpg" alt="Select a track to play"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:pointer;" />
+          <iframe
+            id="trackPlayer"
+            src=""
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            style="display:none;">
+          </iframe>
+        </div>
         <div class="listen-links">
-          <a class="listen-link" href="#" target="_blank">Spotify</a>
-          <a class="listen-link" href="#" target="_blank">Apple Music</a>
-          <a class="listen-link" href="#" target="_blank">Bandcamp</a>
-          <a class="listen-link" href="#" target="_blank">YouTube Music</a>
+          <a class="listen-link" href="https://open.spotify.com/artist/3cFGCzjOq30TZo1RIL3rry" target="_blank">Spotify</a>
+          <a class="listen-link" href="https://music.apple.com/us/artist/barefoot-hockey-goalie/49362557" target="_blank">Apple Music</a>
+          <a class="listen-link" href="https://barefoothockeygoalie.bandcamp.com" target="_blank">Bandcamp</a>
+          <a class="listen-link" href="https://music.youtube.com/channel/UCgqywlT8r-A0mNZGr4dxYmQ" target="_blank">YouTube Music</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── VIDEO ── -->
-  <section id="video">
-    <p class="section-label">Media</p>
-    <h2>Video</h2>
-
-    <!-- 16:9 player -->
-    <p class="video-section-label">Music Videos &amp; Live Footage</p>
-    <div class="video-16-9-wrap">
-      <iframe
-        id="video169"
-        src="https://player.vimeo.com/video/XXXXXXXXX?title=0&byline=0&portrait=0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
+  <!-- ── BACK CATALOG ── -->
+  <section id="catalog">
+    <div class="catalog-album">
+      <h3 class="catalog-title">Kid Champion</h3>
+      <p class="album-meta">Ouch! Productions</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-kidchampion" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1459855370/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. Boxer</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-kidchampion" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1459855370/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Champion?</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-kidchampion" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1459855370/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. TKO/Ojo del Tigre</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-kidchampion" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1459855370/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. Finale</a></li>
+      </ol>
+      <iframe id="player-kidchampion" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=1459855370/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/kid-champion">Kid Champion by Barefoot Hockey Goalie</a>
       </iframe>
     </div>
 
-    <!-- 9:16 gallery -->
-    <p class="video-section-label" style="margin-top:2.5rem;">Social Clips</p>
-    <div class="gallery-wrap">
-      <div class="gallery-stage">
-        <iframe
-          class="gallery-video"
-          id="galleryVideo0"
-          src="https://player.vimeo.com/video/YYYYYYYYY?title=0&byline=0&portrait=0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-        <iframe
-          class="gallery-video"
-          id="galleryVideo1"
-          src="https://player.vimeo.com/video/ZZZZZZZZZ?title=0&byline=0&portrait=0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          style="display:none;">
-        </iframe>
-        <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous">&#8592;</button>
-        <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next">&#8594;</button>
-        <div class="gallery-counter"><span id="galleryCurrent">1</span> / <span id="galleryTotal">2</span></div>
-      </div>
+    <div class="catalog-album" style="margin-top: 3rem;">
+      <h3 class="catalog-title">An Interview with Thomas Edison</h3>
+      <p class="album-meta">Ouch! Productions</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. An Interview with Thomas Edison</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Haircut 100</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. Popeye</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. Shoot and Release Endangered Species Tournament</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=5/">5. Sunshine on My Shoulders</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=6/">6. Amnesia</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=7/">7. Lost the Receipt</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-thomasedison" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=8/">8. .38 Special (I've Been Waiting)</a></li>
+      </ol>
+      <iframe id="player-thomasedison" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=2508078817/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/an-interview-with-thomas-edison">An Interview with Thomas Edison by Barefoot Hockey Goalie</a>
+      </iframe>
     </div>
 
-    <a class="social-link" href="https://vimeo.com" target="_blank">View More on Vimeo →</a>
+    <div class="catalog-album" style="margin-top: 3rem;">
+      <h3 class="catalog-title">Darius: A Rock Opera</h3>
+      <p class="album-meta">Accretions Records</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. Overture</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Follow Us To The Pond</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. Kasperitis</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. Narcoleptic Pee Wee Hockey League</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=5/">5. Agent of Fame</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=6/">6. Barefoot Hockey Goalie</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=7/">7. Frostbite Baretoe Tappin' Dance</a></li>
+      </ol>
+      <iframe id="player-darius" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=1434253483/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/darius-a-rock-opera-2">Darius: A Rock Opera by Barefoot Hockey Goalie</a>
+      </iframe>
+      <p class="album-meta" style="margin-top: 2rem;">Short Stories</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. Take Me Home</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Sugar Mama</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. Evel is the Best</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. 10-Meter Naked Carpet Swim Meet</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=5/">5. ATF</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=6/">6. Enema Karaoke</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=7/">7. Ryan at 16</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-darius-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=8/">8. U-Haul Dreaming</a></li>
+      </ol>
+      <iframe id="player-darius-short" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=3624258507/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/darius-short-stories">Darius: Short Stories by Barefoot Hockey Goalie</a>
+      </iframe>
+    </div>
 
-    <!-- Vimeo Player API -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-      (function () {
-        // ── 16:9 end-card suppression ──
-        var player169 = new Vimeo.Player(document.getElementById('video169'));
-        player169.on('ended', function () {
-          player169.setCurrentTime(0).then(function () { player169.pause(); });
-        });
-
-        // ── 9:16 gallery carousel ──
-        var items = [
-          document.getElementById('galleryVideo0'),
-          document.getElementById('galleryVideo1')
-        ];
-        var current = 0;
-
-        // end-card suppression for each portrait video
-        items.forEach(function (el) {
-          var p = new Vimeo.Player(el);
-          p.on('ended', function () {
-            p.setCurrentTime(0).then(function () { p.pause(); });
-          });
-        });
-
-        function pauseItem(el) {
-          el.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
-        }
-
-        function show(idx) {
-          pauseItem(items[current]);
-          items[current].style.display = 'none';
-          current = (idx + items.length) % items.length;
-          items[current].style.display = 'block';
-          document.getElementById('galleryCurrent').textContent = current + 1;
-        }
-
-        document.getElementById('galleryPrev').addEventListener('click', function () { show(current - 1); });
-        document.getElementById('galleryNext').addEventListener('click', function () { show(current + 1); });
-      })();
-    </script>
+    <div class="catalog-album" style="margin-top: 3rem;">
+      <h3 class="catalog-title">Fediks Butcher Shop</h3>
+      <p class="album-meta">Accretions Records</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. Fediks Butcher Shop</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Shadowdancer</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. Holistic Dentist</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. Incredible Shrinking Estonian</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=5/">5. Deportation Song</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=6/">6. Fedik Reprise</a></li>
+      </ol>
+      <iframe id="player-fediks" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=1220215402/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/fediks-butcher-shop-2">Fediks Butcher Shop by Barefoot Hockey Goalie</a>
+      </iframe>
+      <p class="album-meta" style="margin-top: 2rem;">Short Stories</p>
+      <ol class="tracklist-tracks">
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=1/">1. Cooney Sam</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=2/">2. Rejected Foreskin Clone Army</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=3/">3. Ariel</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=4/">4. Daisy</a></li>
+        <li><a class="catalog-track-link" href="#" data-player="player-fediks-short" data-track-url="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/t=5/">5. Español is Better</a></li>
+      </ol>
+      <iframe id="player-fediks-short" class="bandcamp-player" style="border: 0; width: 100%; height: 42px;"
+        src="https://bandcamp.com/EmbeddedPlayer/album=2611887068/size=small/bgcol=FAF6EE/linkcol=D62828/tracklist=false/transparent=true/"
+        seamless>
+        <a href="https://barefoothockeygoalie.bandcamp.com/album/fedik-short-stories">Fedik Short Stories by Barefoot Hockey Goalie</a>
+      </iframe>
+    </div>
   </section>
+
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    (function () {
+      // ── Track Player ──
+      var trackPlayerEl = document.getElementById('trackPlayer');
+      var trackPlayerPlaceholder = document.getElementById('trackPlayerPlaceholder');
+      var trackPlayerInstance = null;
+
+      // Handle track link clicks
+      var trackLinks = document.querySelectorAll('.track-link');
+      trackLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var videoId = this.getAttribute('data-video-id');
+          if (!videoId) return;
+
+          // Reveal the iframe, hide the placeholder
+          trackPlayerPlaceholder.style.display = 'none';
+          trackPlayerEl.style.display = 'block';
+
+          // Load the video
+          trackPlayerEl.src = 'https://player.vimeo.com/video/' + videoId + '?title=0&byline=0&portrait=0&badge=false&autoplay=1';
+
+          // Init player instance once, then attach end-card suppression
+          if (!trackPlayerInstance) {
+            trackPlayerInstance = new Vimeo.Player(trackPlayerEl);
+            trackPlayerInstance.on('ended', function () {
+              trackPlayerInstance.setCurrentTime(0).then(function () { trackPlayerInstance.pause(); });
+            });
+          }
+        });
+      });
+    })();
+
+    // ── Catalog Track Player ──
+    (function () {
+      var catalogLinks = document.querySelectorAll('.catalog-track-link');
+      catalogLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var playerId = this.getAttribute('data-player');
+          var trackUrl = this.getAttribute('data-track-url');
+          var autoUrl = trackUrl.replace(/\/$/, '') + '/autoplay=1/';
+          // Recreate the iframe so the browser treats it as a fresh
+          // user-initiated load and allows autoplay
+          var oldIframe = document.getElementById(playerId);
+          var newIframe = document.createElement('iframe');
+          newIframe.id = playerId;
+          newIframe.className = oldIframe.className;
+          newIframe.setAttribute('style', oldIframe.getAttribute('style'));
+          newIframe.setAttribute('seamless', '');
+          newIframe.src = autoUrl;
+          oldIframe.parentNode.replaceChild(newIframe, oldIframe);
+        });
+      });
+    })();
+  </script>
 
   <!-- ── MEMBERS ── -->
   <section id="members">
@@ -645,7 +815,7 @@
         <span class="member-name">Toe Knee Padderelli</span> — <span class="member-role">Guitar, Vocals</span>
       </div>
       <div class="member-row">
-        <span class="member-name">Blair Hatch</span> — <span class="member-role">Vocals</span>
+        <span class="member-name">Berto Catch</span> — <span class="member-role">Vocals</span>
       </div>
       <div class="member-row">
         <span class="member-name">Matthew Pray</span> — <span class="member-role">Bass</span>
@@ -661,10 +831,10 @@
     <p class="section-label">Stay Connected</p>
     <h2>Follow Us</h2>
     <div class="follow-links">
-      <a class="follow-link" href="#" target="_blank">Instagram</a>
-      <a class="follow-link" href="#" target="_blank">Spotify</a>
-      <a class="follow-link" href="#" target="_blank">Bandcamp</a>
-      <a class="follow-link" href="#" target="_blank">YouTube</a>
+      <a class="follow-link" href="https://music.youtube.com/channel/UCgqywlT8r-A0mNZGr4dxYmQ" target="_blank">YouTube</a>
+      <a class="follow-link" href="https://open.spotify.com/artist/3cFGCzjOq30TZo1RIL3rry" target="_blank">Spotify</a>
+      <a class="follow-link" href="https://music.apple.com/us/artist/barefoot-hockey-goalie/49362557" target="_blank">Apple Music</a>
+      <a class="follow-link" href="https://barefoothockeygoalie.bandcamp.com" target="_blank">Bandcamp</a>
     </div>
   </section>
 
