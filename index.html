@@ -190,6 +190,38 @@
     /* section dividers */
     section + section { border-top: 1px solid rgba(123,91,166,0.18); }
 
+    /* ── YOUTUBE ── */
+    .yt-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .yt-item {}
+    .yt-item-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.6rem;
+    }
+    .yt-frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.35);
+    }
+    .yt-frame-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* ── ABOUT ── */
     .about-body {
       font-size: 1.05rem;
@@ -844,6 +876,51 @@
       <div class="member-row">
         <span class="member-name">Matt Lockout</span> — <span class="member-role">Drums</span>
       </div>
+    </div>
+  </section>
+
+  <!-- ── YOUTUBE VIDEOS ── -->
+  <section id="videos">
+    <p class="section-label">Watch</p>
+    <h2>YouTube Videos</h2>
+    <div class="yt-grid">
+
+      <div class="yt-item">
+        <p class="yt-item-label">Evel Is The Best</p>
+        <div class="yt-frame-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/MS5sWnWevu4"
+            title="Barefoot Hockey Goalie — Evel Is The Best"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="yt-item">
+        <p class="yt-item-label">Wyoming</p>
+        <div class="yt-frame-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/GpkAWzFecbQ"
+            title="Barefoot Hockey Goalie — Wyoming"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="yt-item">
+        <p class="yt-item-label">Haircut 100 Video Medley</p>
+        <div class="yt-frame-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/2wHNPbNJ9Os"
+            title="Barefoot Hockey Goalie — Haircut 100 Video Medley"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
     </div>
   </section>
 
