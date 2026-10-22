@@ -497,6 +497,71 @@
     }
 
     /* ── SHOWS ── */
+    .show-card {
+      background: var(--offwhite);
+      border-left: 4px solid var(--orange);
+      border-radius: 3px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 1.25rem;
+    }
+    .show-date {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .show-venue {
+      font-family: 'Alfa Slab One', serif;
+      font-size: 1.15rem;
+      color: var(--orange);
+      margin-top: 0.4rem;
+    }
+    .show-location {
+      font-size: 0.9rem;
+      color: var(--purple);
+      margin-top: 0.25rem;
+    }
+    .show-note {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--teal);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      margin-top: 0.9rem;
+    }
+    .show-card--flyer {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+    .show-flyer img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(26,18,16,0.25);
+      transition: transform 0.2s ease;
+    }
+    .show-flyer:hover img { transform: scale(1.02); }
+    @media (max-width: 640px) {
+      .show-card--flyer { grid-template-columns: 1fr; }
+      .show-flyer { max-width: 340px; }
+    }
+    .show-guests {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-top: 0.75rem;
+    }
     .shows-tba {
       font-family: 'Oswald', sans-serif;
       font-size: 0.85rem;
@@ -612,6 +677,7 @@
     <a class="nav-brand" href="#top">Barefoot Hockey Goalie</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#shows">Shows</a></li>
       <li><a href="#music">Music</a></li>
       <li><a href="#members">Members</a></li>
       <li><a href="#press">Press</a></li>
@@ -642,6 +708,24 @@
       <p>With two releases on Accretions Records and the self released albums An Interview with Thomas Edison and Kid Champion, BHG remained on stage, sharpening skates, crossing the blue line. Their fourth rock opera is an attempt to smack listeners with a suburban punch and get them out to see a show!</p>
 
       <div class="pull-quote">"This is crazy, unexpected and a whole lotta fun in a very twisted way." — INK 19</div>
+    </div>
+  </section>
+
+  <!-- ── SHOWS ── -->
+  <section id="shows">
+    <p class="section-label">Live</p>
+    <h2>Upcoming Shows</h2>
+    <div class="show-card show-card--flyer">
+      <a class="show-flyer" href="blackCatFlyer.jpg" target="_blank" rel="noopener">
+        <img src="blackCatFlyer.jpg" alt="Barefoot Hockey Goalie at Black Cat Bar — November 14, 2026 flyer" loading="lazy" />
+      </a>
+      <div class="show-info">
+        <div class="show-date">Saturday, November 14, 2026</div>
+        <div class="show-venue">Black Cat Bar</div>
+        <div class="show-location">4246 University Ave · San Diego, CA</div>
+        <span class="show-note">Clairemont Vinyl Release Party</span>
+        <div class="show-guests">with special guests</div>
+      </div>
     </div>
   </section>
 
